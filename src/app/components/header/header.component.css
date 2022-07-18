@@ -1,0 +1,29 @@
+.header__navbar {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: all 0.1s linear;
+  border-bottom: 1px solid rgb(229, 231, 235);
+  /* padding-left: 80px;
+  padding-right: 80px; */
+}
+.header__navbar--not-homepage {
+  background-color: white !important;
+}
+.header__navbar--not-homepage .navbar__text--scroll {
+  color: #222222 !important;
+}
+.header__navbar--scroll {
+  background-color: white;
+  box-shadow: 0px 15px 10px -15px rgba(149, 157, 165, 0.2);
+}
+.navbar__text--scroll {
+  color: #fff;
+  transition: all 0.1s linear;
+}
+.header__navbar--scroll .navbar__text--scroll {
+  color: #222222;
+}

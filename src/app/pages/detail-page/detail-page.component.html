@@ -1,0 +1,332 @@
+<div class="container pt-5">
+  <h1 class="room__name text-capitalize h3">
+    {{ this.dataRoom["name"] }}
+  </h1>
+  <div class="room__navigation d-flex w-100 justify-content-between">
+    <div class="room__navigation--left d-flex">
+      <div class="room__review">
+        <span class="room__review--rate">
+          <nz-rate [(ngModel)]="value" [nzTooltips]="tooltips"></nz-rate>
+          {{ value }}
+        </span>
+
+        <button class="btn ml-3">
+          <u> {{ this.dataReviews.length }} đánh giá</u>
+        </button>
+      </div>
+      <button class="ml-3 btn">
+        <u>Việt Nam </u>
+      </button>
+    </div>
+    <div class="room__navigation--right">
+      <button class="mr-2 btn"><u> Chia sẻ</u></button>
+      <button class="btn"><u> Lưu </u></button>
+    </div>
+  </div>
+  <div class="room__galery pt-4">
+    <div class="room__galery--box row align-items-stretch">
+      <div class="col-6 rounded-left">
+        <img
+          class="img-fluid w-100 rounded-left"
+          src="{{ this.dataRoom['image'] }}"
+          alt=""
+        />
+      </div>
+      <div class="col-6 row">
+        <div class="col-6">
+          <img
+            class="img-fluid w-100"
+            src="{{ this.dataRoom['image'] }}"
+            alt=""
+          />
+        </div>
+        <div class="col-6 rounded-right">
+          <img
+            class="img-fluid w-100"
+            src="{{ this.dataRoom['image'] }}"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <div class="room__info pt-5 mb-3 border-bottom">
+        <div class="room__info--header mb-2 h5">Phòng riêng tại nhà</div>
+        <div class="room__info--space d-flex mb-2">
+          <div class="border-right mr-1 pr-1">
+            <span> {{ this.dataRoom["guests"] }}</span> Phòng khách
+          </div>
+          <div class="border-right mr-1 pr-1">
+            <span>{{ this.dataRoom["bedRoom"] }}</span> Phòng ngủ
+          </div>
+
+          <div class="border-right mr-1 pr-1">
+            <span>{{ this.dataRoom["bath"] }}</span> Phòng tắm
+          </div>
+        </div>
+      </div>
+      <div class="room__guide border-bottom py-4">
+        <div class="room__guider--content d-flex">
+          <div class="content__icon mr-1">
+            <i class="fa-solid fa-door-closed"></i>
+          </div>
+          <div class="content__des">
+            <div class="content__des--header">Tự nhận phòng</div>
+            <div class="content__des--explaint">
+              Tự nhận phòng bằng khóa thông minh.
+            </div>
+          </div>
+        </div>
+        <div class="room__guider--content d-flex">
+          <div class="content__icon mr-1">
+            <i class="fa-solid fa-key"></i>
+          </div>
+          <div class="content__des">
+            <div class="content__des--header">
+              Trải nghiệm nhận phòng tuyệt vời
+            </div>
+            <div class="content__des--explaint">
+              100% khách gần đây đã xếp hạng 5 sao cho quy trình nhận phòng.
+            </div>
+          </div>
+        </div>
+        <div class="room__guider--content d-flex">
+          <div class="content__icon mr-1">
+            <i class="fa-regular fa-calendar"></i>
+          </div>
+          <div class="content__des">
+            <div class="content__des--header">Hủy miễn phí trước 3 thg 5.</div>
+          </div>
+        </div>
+      </div>
+      <div class="room__description border-bottom py-4">
+        <div class="room__description--content mb-1">
+          {{ this.dataRoom["description"] }}
+        </div>
+        <button class="room__description--showMore btn p-0">
+          <strong><u> Hiển thị thêm ></u></strong>
+        </button>
+      </div>
+      <div class="room__services border-bottom py-4">
+        <div class="room__services--header h5">Nơi này có những gì cho bạn</div>
+        <div class="room__services--list row">
+          <div
+            class="room__services--item col-12 col-md-4 d-flex align-items-baseline"
+          >
+            <div
+              class="room__services--icon mr-2"
+              *ngIf="this.dataRoom['elevator']"
+            >
+              <svg
+                stroke="currentColor"
+                fill="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M153 35v58h206V35H153zm60.3 13h32l-16 32-16-32zm74.7 0l16 32h-32l16-32zm-183 89v350h142V137H105zm160 0v350h142V137H265zm173 141v84h52v-84h-52zm26 26a16 16 0 0 1 16 16 16 16 0 0 1-16 16 16 16 0 0 1-16-16 16 16 0 0 1 16-16z"
+                ></path>
+              </svg>
+            </div>
+            <div class="room__services--name">Elevator</div>
+          </div>
+
+          <div
+            *ngIf="this.dataRoom['hotTub']"
+            class="room__services--item col-12 col-md-4 d-flex align-items-baseline"
+          >
+            <div class="room__services--icon mr-2">
+              <i class="fa-solid fa-hot-tub-person"></i>
+            </div>
+            <div class="room__services--name text-capitalize">Hot Tub</div>
+          </div>
+          <div
+            *ngIf="this.dataRoom['pool']"
+            class="room__services--item col-12 col-md-4 d-flex align-items-baseline"
+          >
+            <div class="room__services--icon mr-2">
+              <i class="fa-solid fa-person-swimming"></i>
+            </div>
+            <div class="room__services--name text-capitalize">Pool</div>
+          </div>
+          <div
+            *ngIf="this.dataRoom['indoorFireplace']"
+            class="room__services--item col-12 col-md-4 d-flex align-items-baseline"
+          >
+            <div class="room__services--icon mr-2">
+              <svg
+                stroke="currentColor"
+                fill="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M281.53 23.438c48.44 71.504-18.447 145.556-63.655 58.968 27.295 144.502-65.22 166.347-74.75 74.75-73.554 65.057-59.358 147.17-20.438 210.75l45.844-26.344c-12.004-18.318-17.995-42.502-15.31-66.218 25.688 39.43 106.855 10.088 97.124-59.938 10.695 32.074 37.802 28.97 65.78-20.5C278.07 297.622 337.95 364.248 378.032 333.5c1.47 11.97-2.95 25.657-10.592 38.063l46.968 12.53c55.122-47.503 79.71-135.97-3.812-175.53 39.08 60.478-13.1 105.064-60.72 41.468-38.546-72.133 82.366-113.394-68.343-226.593zM173.876 48.124c-64.128 32.333-14.642 60.51-14.03 92.344 44.122-38.935-3.722-53.508 14.03-92.345zm74.47 269.094L75 416.874c2.71 18.39 8.98 34.417 18.813 48.5l92-44.063-78.688 59.875c3.39 3.38 7.033 6.62 10.938 9.75L192.78 448c-.023-.738-.06-1.475-.06-2.22 0-37.22 30.495-67.56 67.81-67.56 10.53 0 20.527 2.413 29.44 6.717-2.323-13.414-7.28-27.104-14.72-39.28l-94.938 40.124 82.47-56.467c-4.34-4.55-9.166-8.64-14.438-12.094zm58.874 57.624c1.61 7.148 2.6 14.315 2.967 21.312l.22 3.938c11.13 12.042 17.937 28.09 17.937 45.687 0 7.795-1.356 15.276-3.813 22.25l91.345 24.376c4.642-6.327 8.588-12.768 11.844-19.375l-63.158-24.686 70.125 6.844c.866-2.948 1.61-5.923 2.22-8.938l-97.063-34.22L439 427.5c.156-5.772-.103-11.67-.813-17.72L307.22 374.845zm-46.69 22.062c-27.26 0-49.124 21.8-49.124 48.875 0 27.078 21.864 48.876 49.125 48.876 27.263 0 49.126-21.798 49.126-48.875 0-27.075-21.863-48.874-49.125-48.874zm-4.936 11.78c43.778.002 58.435 71.595 0 71.595 26.622-23.113 29.81-46.888 0-71.592zm.187 9.845c-21.616 17.916-19.304 35.177 0 51.94-42.375 0-31.745-51.94 0-51.94z"
+                ></path>
+              </svg>
+            </div>
+            <div class="room__services--name text-capitalize">
+              Indoor Fire Place
+            </div>
+          </div>
+          <div
+            *ngIf="this.dataRoom['gym']"
+            class="room__services--item col-12 col-md-4 d-flex align-items-baseline"
+          >
+            <div class="room__services--icon mr-2"></div>
+            <div class="room__services--name text-capitalize">Gym</div>
+          </div>
+          <div
+            *ngIf="this.dataRoom['dryer']"
+            class="room__services--item col-12 col-md-4 d-flex align-items-baseline"
+          >
+            <div class="room__services--icon mr-2"></div>
+            <div class="room__services--name text-capitalize">Dryer</div>
+          </div>
+
+          <div
+            *ngIf="this.dataRoom['kitchen']"
+            class="room__services--item col-12 col-md-4 d-flex align-items-baseline"
+          >
+            <div class="room__services--icon mr-2"></div>
+            <div class="room__services--name text-capitalize">kitchen</div>
+          </div>
+          <div
+            *ngIf="this.dataRoom['wifi']"
+            class="room__services--item col-12 col-md-4 d-flex align-items-baseline"
+          >
+            <div class="room__services--icon mr-2"></div>
+            <div class="room__services--name text-capitalize">Wifi</div>
+          </div>
+          <div
+            *ngIf="this.dataRoom['heating']"
+            class="room__services--item col-12 col-md-4 d-flex align-items-baseline"
+          >
+            <div class="room__services--icon mr-2"></div>
+            <div class="room__services--name text-capitalize">Heating</div>
+          </div>
+          <div
+            *ngIf="this.dataRoom['cableTV']"
+            class="room__services--item col-12 col-md-4 d-flex align-items-baseline"
+          >
+            <div class="room__services--icon mr-2"></div>
+            <div class="room__services--name text-capitalize">Cable Tv</div>
+          </div>
+        </div>
+      </div>
+      <div class="room__booking border-bottom py-4">
+        <h4 class="booking__header h5">Chọn ngày nhận phòng</h4>
+        <p class="booking__des">Thêm ngày đi để biết chính xác giá</p>
+        <div class="booking__datepicker">
+          <p>Ngày đến: {{ selectedDateRange?.start | date }}</p>
+          <p>Ngày đi: {{ selectedDateRange?.end | date }}</p>
+          <mat-calendar
+            class="booking__datepicker--calendar"
+            (selectedChange)="_onSelectedChange($event)"
+            [selected]="selectedDateRange"
+            [minDate]="todayDate"
+          ></mat-calendar>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 p-2">
+      <div class="booking__form">
+        <app-booking-form
+          [dateStart]="this.selectedDateRange?.start"
+          [dateEnd]="this.selectedDateRange?.end"
+          [roomId]="this.idRoom"
+          [roomPrice]="this.dataRoom.price"
+        ></app-booking-form>
+      </div>
+    </div>
+
+    <div class="room__reviews border-bottom py-4 w-100" id="roomReviews">
+      <div class="room__reviews--header h5 py-2">Đánh giá của người dùng</div>
+      <div class="row">
+        <ng-container *ngFor="let review of this.dataReviews; let i = index">
+          <div class="col-6 py-3" *ngIf="i < 4">
+            <app-user-comment [dataUserComment]="review"></app-user-comment>
+          </div>
+        </ng-container>
+        <div class="reviews__show">
+          <button
+            type="button"
+            class="btn btn-primary btn-sm py-1"
+            data-toggle="modal"
+            data-target="#reviewsAll"
+          >
+            Hiển thị thêm >
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="reviewsAll"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body" style="height: 80vh; overflow: scroll">
+                  <div class="row">
+                    <ng-container
+                      *ngFor="let review of this.dataReviews; let i = index"
+                    >
+                      <div class="col-6 py-3">
+                        <app-user-comment
+                          [dataUserComment]="review"
+                        ></app-user-comment>
+                        <!-- <div
+                          class="reviews__user--info d-flex align-items-center mb-3"
+                        >
+                          <div class="reviews__user--info-l mr-3">
+                            <div
+                              class="reviews__user--avatar rounded-circle bg-danger d-flex align-items-center justify-content-center"
+                              style="height: 60px; width: 60px"
+                            >
+                              Avata
+                            </div>
+                          </div>
+                          <div class="reviews__user--info-r">
+                            <div class="reviews__user--name h5 text-capitalize">
+                              {{ review["userId"]["name"] }}
+                            </div>
+                            <div class="reviews__user--dateCreated">
+                              {{ review["created_at"] | date }}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="reviews__user--content">
+                          {{ review["content"] }}
+                        </div> -->
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Đóng
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

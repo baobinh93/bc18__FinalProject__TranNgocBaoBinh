@@ -1,0 +1,11 @@
+export class Variable {
+  BaseUrl: string = 'https://airbnb.cybersoft.edu.vn/';
+  Headers: {} = {
+    tokenByClass:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAxOSIsIkhldEhhblN0cmluZyI6IjI1LzExLzIwMjIiLCJIZXRIYW5UaW1lIjoiMTY2OTMzNDQwMDAwMCIsIm5iZiI6MTYzNzk0NjAwMCwiZXhwIjoxNjY5NDgyMDAwfQ.TumAQWyBApm0qV2BOdFeXHmfMi9OQfvjTTG-Vs-cxf4',
+    //token:
+    //  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTY4ZTcwOGVmZTE5MzAwMWMwYTVhNTAiLCJlbWFpbCI6ImtoYTl4MDE1OUBnbWFpbC5jb20iLCJ0eXBlIjoiQURNSU4iLCJpYXQiOjE2NTQ3ODIzMDF9.ixS81YOUwERZZUrTWwhHHCkH_zMd8OwKY-4A-vQv0iU',
+  };
+  tokenAdmin: string =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTY4ZTcwOGVmZTE5MzAwMWMwYTVhNTAiLCJlbWFpbCI6ImtoYTl4MDE1OUBnbWFpbC5jb20iLCJ0eXBlIjoiQURNSU4iLCJpYXQiOjE2NTQ3ODIzMDF9.ixS81YOUwERZZUrTWwhHHCkH_zMd8OwKY-4A-vQv0iU';
+}

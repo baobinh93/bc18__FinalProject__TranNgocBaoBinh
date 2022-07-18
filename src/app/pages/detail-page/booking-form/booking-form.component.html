@@ -1,0 +1,100 @@
+<form
+  [formGroup]="validateForm"
+  (ngSubmit)="submitForm()"
+  class="booking__form border-bottom"
+>
+  <mat-form-field class="form__input--date-modal" style="height: 0px">
+    <mat-date-range-input [rangePicker]="picker" class="d-none">
+      <input matStartDate formControlName="dateStart" #dateRangeStart />
+      <input
+        matEndDate
+        formControlName="dateEnd"
+        #dateRangeEnd
+        (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)"
+      />
+    </mat-date-range-input>
+
+    <mat-date-range-picker #picker class=""></mat-date-range-picker>
+  </mat-form-field>
+  <div class="form__date">
+    <div class="row" mat-raised-button (click)="picker.open()">
+      <div class="col-6 border--right">
+        <div class="p-1">
+          <div class="form__input--header">Nhận phòng</div>
+          <div class="form__input--value pl-2 text-muted">
+            {{
+              this.validateForm.controls["dateStart"].value
+                ? (this.validateForm.controls["dateStart"].value | date)
+                : "Thêm ngày"
+            }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="p-1">
+          <div class="form__input--header text-dark">Trả phòng</div>
+          <div class="form__input--value pl-2 text-muted">
+            {{
+              this.validateForm.controls["dateEnd"].value
+                ? (this.validateForm.controls["dateEnd"].value | date)
+                : "Thêm ngày"
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form__guest">
+    <div class="row">
+      <div class="col-12">
+        <div class="p-1">
+          <div class="form__input--header">Khách</div>
+
+          <input
+            class="pl-2 form__input--guest"
+            formControlName="guest"
+            type="number"
+            min="0"
+            value="0"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form__submitBtn w-100 d-flex justify-content-center">
+    <button type="submit" class="my-3 rounded px-4 py-1 btn">Đặt phòng</button>
+  </div>
+  <div class="booking__bill mb-3">
+    <div class="bill__price-by-day d-flex justify-content-between mb-3">
+      <div class="">
+        <u>
+          $ {{ this.numberWithCommas(this.roomPrice) }} x
+          {{ this.numberOfDate }} đêm
+        </u>
+      </div>
+      <div class="">
+        $ {{ this.numberWithCommas(this.roomPrice * this.numberOfDate) }}
+      </div>
+    </div>
+    <div class="bill__tax d-flex justify-content-between">
+      <div class=""><u> Phí dịch vụ 10% </u></div>
+      <div class="">
+        $
+        {{
+          this.numberWithCommas((this.roomPrice * this.numberOfDate * 10) / 100)
+        }}
+      </div>
+    </div>
+  </div>
+</form>
+<div class="total-bill my-2">
+  <div class="d-flex justify-content-between">
+    <div class="">Tổng trước thuế</div>
+    <div class="">
+      $
+      {{
+        this.numberWithCommas((this.roomPrice * this.numberOfDate * 110) / 100)
+      }}
+    </div>
+  </div>
+</div>

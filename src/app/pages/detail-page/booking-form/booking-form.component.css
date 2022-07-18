@@ -1,0 +1,42 @@
+.form__input--header {
+  color: #000000d9;
+  font-weight: bold;
+}
+.form__date {
+  border: 1px solid rgb(176, 176, 176);
+  border-radius: 5px 5px 0 0;
+}
+.form__date .border--right {
+  border-right: 1px solid rgb(176, 176, 176);
+}
+.form__input--guest {
+  background-color: transparent;
+  border: none;
+}
+.form__input--date-modal {
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+}
+.form__guest {
+  border-top: 0px solid #000000d9;
+  border-right: 1px solid rgb(176, 176, 176);
+  border-left: 1px solid rgb(176, 176, 176);
+  border-bottom: 1px solid rgb(176, 176, 176);
+  border-radius: 0 0 5px 5px;
+}
+.form__submitBtn button {
+  background-color: #ff385c;
+  color: white;
+  transition: all 0.2s linear;
+}
+.form__submitBtn button:hover {
+  box-shadow: #ff385c 0px 5px 10px;
+}
+.bill__price-by-day,
+.bill__tax {
+  font-size: 14px;
+}
+.total-bill {
+  font-size: 16px;
+}
