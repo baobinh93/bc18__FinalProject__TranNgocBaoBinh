@@ -30,16 +30,16 @@ export class RoomForRentService {
     bath: number,
     description: string,
     price: number,
-    elevator: boolean,
-    hotTub: boolean,
-    pool: boolean,
-    indoorFireplace: boolean,
-    dryer: boolean,
-    gym: boolean,
-    kitchen: boolean,
-    wifi: boolean,
-    heating: boolean,
-    cableTV: boolean,
+    elevator: boolean = false,
+    hotTub: boolean = false,
+    pool: boolean = false,
+    indoorFireplace: boolean = false,
+    dryer: boolean = false,
+    gym: boolean = false,
+    kitchen: boolean = false,
+    wifi: boolean = false,
+    heating: boolean = false,
+    cableTV: boolean = false,
     locationId: string,
     token: string
   ) {
@@ -72,15 +72,12 @@ export class RoomForRentService {
   }
   // 17 Lay Danh Sach Phong Cho Thue
   // co the them skip va  limit nhung met roi :))
-  getListRoomForRent(_locationId: string) {
-    return this.https.get<any>(
-      this.Variable.BaseUrl + 'api/rooms?locationId=' + _locationId,
-      {
-        headers: {
-          ...this.Variable.Headers,
-        },
-      }
-    );
+  getListRoomForRent() {
+    return this.https.get<any>(this.Variable.BaseUrl + 'api/rooms', {
+      headers: {
+        ...this.Variable.Headers,
+      },
+    });
   }
   // 18 Lay Thong Tin Chi Tiet Phong Cho Thue
   getInfoRoomForRent(_id: string) {
@@ -96,7 +93,7 @@ export class RoomForRentService {
   updateInforRoomForRent(
     name: string,
     guests: number,
-    bedroom: number,
+    bedRoom: number,
     bath: number,
     description: string,
     price: number,
@@ -111,13 +108,13 @@ export class RoomForRentService {
     heating: boolean,
     cableTV: boolean,
     locationId: string,
-    token: string,
-    _idRoomForRent: string
+    _idRoomForRent: string,
+    token: string
   ) {
     let params = {
       name,
       guests,
-      bedroom,
+      bedRoom,
       bath,
       description,
       price,
@@ -133,7 +130,7 @@ export class RoomForRentService {
       cableTV,
       locationId,
     };
-    return this.https.post<any>(
+    return this.https.put<any>(
       this.Variable.BaseUrl + 'api/rooms/' + _idRoomForRent,
       params,
       {

@@ -342,7 +342,7 @@ export class RoomsPageComponent implements OnInit {
             this.paramsLocationToFindRooms
           ) {
             // this.allIdLocationNeedToFindRoom.push(location['_id']);
-            this.roomsService.getListRoomForRent(location['_id']).subscribe(
+            this.roomsService.getListRoomForRent().subscribe(
               (result) => {
                 this.dataAllRooms = [...this.dataAllRooms, ...result];
                 console.log(location, result);

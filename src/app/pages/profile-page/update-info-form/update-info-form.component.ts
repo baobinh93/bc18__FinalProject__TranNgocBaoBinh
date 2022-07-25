@@ -184,10 +184,10 @@ export class UpdateInfoFormComponent {
   constructor(private fb: FormBuilder, private userService: UserService) {
     this.localStorageService = new localStorageService();
   }
-
+  localStorageService;
   isVisible = false;
   validateForm!: FormGroup;
-  localStorageService;
+
   ngOnInit(): void {
     //console.log('update form:', this.userInfo._id);
     // console.log('2022-06-09T00:00:00.000Z'.split('T')[0]);

@@ -41,24 +41,33 @@ export class UserService {
   }
   // lay danh  sach nguoi dung
   getAllUsers(_skip: number = 0, _limit: number = 3) {
-    return this.https.get<any>(
-      this.Variable.BaseUrl +
-        'api/users/' +
-        'pagination?skip=' +
-        _skip +
-        '&limit=' +
-        _limit,
-      {
-        headers: this.Variable.Headers,
-      }
-    );
+    if (_skip && _limit) {
+      return this.https.get<any>(
+        this.Variable.BaseUrl +
+          'api/users/' +
+          'pagination?skip=' +
+          _skip +
+          '&limit=' +
+          _limit,
+        {
+          headers: this.Variable.Headers,
+        }
+      );
+    } else {
+      return this.https.get<any>(
+        this.Variable.BaseUrl + 'api/users/' + 'pagination',
+        {
+          headers: this.Variable.Headers,
+        }
+      );
+    }
   }
   //xoa nguoi dung
   deleteUser(_id: string, token: string = '') {
     return this.https.delete<any>(this.Variable.BaseUrl + 'api/users/' + _id, {
       headers: {
         ...this.Variable.Headers,
-        token: token,
+        token: this.Variable.tokenAdmin,
       },
     });
   }

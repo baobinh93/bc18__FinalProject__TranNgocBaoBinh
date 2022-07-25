@@ -16,6 +16,7 @@ import { ConvertNameToCodeNamePipe } from './pipes/convertNameToCodeName.pipe';
 import { AuthGuard } from './auth.guard';
 import { AntdModule } from './antd/antd.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminGuard } from './admin.guard';
 let router: Routes = [
   {
     path: '',
@@ -59,6 +60,15 @@ let router: Routes = [
     loadChildren: () => {
       return import('./pages/detail-page/detail-page.module').then(
         (m) => m.DetailPageModule
+      );
+    },
+  },
+  {
+    path: '',
+    canActivate: [AdminGuard],
+    loadChildren: () => {
+      return import('./pages/admin-page/admin-page.module').then(
+        (m) => m.AdminPageModule
       );
     },
   },

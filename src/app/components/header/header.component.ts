@@ -135,7 +135,7 @@ import { localStorageService } from 'src/app/localStorage.service';
         </div>
       </div>
     </div>
-    <div class="mt-5 p-2" *ngIf="!isHomePage"></div>
+    <div class="mt-5 p-5 p-md-3" *ngIf="!isHomePage"></div>
   `,
   styleUrls: ['./header.component.css'],
 })
