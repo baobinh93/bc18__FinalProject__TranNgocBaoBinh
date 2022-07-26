@@ -6,6 +6,7 @@ import { AntdModule } from '../../antd/antd.module';
 
 import { PageLayoutComponent } from '../page-layout/page-layout.component';
 import { ConvertNameToCodeNamePipe } from 'src/app/pipes/convertNameToCodeName.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 let router: Routes = [
   {
@@ -20,7 +21,13 @@ let router: Routes = [
   },
 ];
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(router), AntdModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(router),
+    AntdModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   declarations: [HomePageComponent, ConvertNameToCodeNamePipe],
 })
 export class HomePageModule {}

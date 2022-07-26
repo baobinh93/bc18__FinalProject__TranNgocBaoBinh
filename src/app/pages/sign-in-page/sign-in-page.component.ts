@@ -174,7 +174,7 @@ import { Router } from '@angular/router';
           <form
             #signInForm="ngForm"
             (ngSubmit)="handleSignInSubmit()"
-            class="w-100"
+            class="w-100 mt-sm-4"
           >
             <div class="input-group">
               <div class="input-group-prepend">
@@ -185,7 +185,7 @@ import { Router } from '@angular/router';
               <input
                 type="text"
                 class="form-control"
-                placeholder="Your Email"
+                placeholder="Nhập email"
                 name="email"
                 ngModel
                 #emailInputRef="ngModel"
@@ -196,7 +196,7 @@ import { Router } from '@angular/router';
               class="p-0 text-danger"
               *ngIf="   emailInputRef.errors?.['required'] && emailInputRef.touched "
             >
-              Vui long nhap Email
+              Vui lòng nhập Email
             </div>
             <div
               class="p-0 text-danger "
@@ -205,7 +205,7 @@ import { Router } from '@angular/router';
                 emailInputRef.touched && !emailInputRef.errors?.['required']
               "
             >
-              Email khong hop le
+              Email không hợp lệ
             </div>
             <div class="input-group mt-3">
               <div class="input-group-prepend">
@@ -217,7 +217,7 @@ import { Router } from '@angular/router';
                 type="text"
                 class="form-control "
                 name="password"
-                placeholder="Your PassWord"
+                placeholder="Nhập password"
                 ngModel
                 #passwordInputRef="ngModel"
                 required
@@ -227,28 +227,29 @@ import { Router } from '@angular/router';
               class="p-0 text-danger"
               *ngIf="passwordInputRef.errors?.['required'] && passwordInputRef.touched "
             >
-              Vui long nhap Password
+              Vui lòng nhập Password
             </div>
-            <div
+            <!-- <div
               class="p-0 text-danger "
               *ngIf="
                 (!validate.password(passwordInputRef.value)) &&
                 passwordInputRef.touched && !passwordInputRef.errors?.['required']
               "
             >
-              Minimum eight characters, at least one uppercase letter, one
-              lowercase letter and one number
-            </div>
+              Password có ít nhất 8 chữ, bao gồm tối thiểu 1 chữ HOA, 1 chữ
+              thường và 1 ký tự đặc biệt
+            </div> -->
             <div class="mt-3">
               <button
+                class="btn btn-primary border-0 btn-sm"
                 [disabled]="passwordInputRef.errors?.['required'] ||  emailInputRef.errors?.['required'] || !validate.password(passwordInputRef.value) || !validate.email(emailInputRef.value)"
                 [ngClass]="passwordInputRef.errors?.['required'] ||  emailInputRef.errors?.['required'] || !validate.password(passwordInputRef.value) || !validate.email(emailInputRef.value)? 'bg-secondary text-white' : 'bg-danger text-warning'"
               >
-                SIGNIN NOW
+                Đăng Nhập
               </button>
             </div>
 
-            <a href="/sign-up" class=""> Ban chua co tai khoan </a>
+            <a href="/sign-up" class="mt-5 d-block"> Bạn chưa có tài khoản ?</a>
           </form>
         </div>
       </div>

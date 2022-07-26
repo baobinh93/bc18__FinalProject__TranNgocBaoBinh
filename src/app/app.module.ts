@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -84,7 +85,13 @@ let router: Routes = [
     BrowserAnimationsModule,
     MatSliderModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    {
+      provide: APP_BASE_HREF,
+      useValue: '/bc18__FinalProject__TranNgocBaoBinh/',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

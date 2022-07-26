@@ -10,9 +10,17 @@
       Explore top-rated attractions, activities and more!
     </p>
     <span class="typed-element"> </span>
-    <form action="">
+    <form
+      action=""
+      #searchForm="ngForm"
+      (ngSubmit)="handleSearchSubmit()"
+      class="w-100 mt-sm-4"
+    >
       <div class="search-box bg-white row align-items-center">
         <input
+          name="location"
+          ngModel
+          #locationInputRef="ngModel"
           type="text"
           placeholder="What are you looking for ?"
           class="col-5 p-3 rounded-right-pill border-right search-box__input-1"
@@ -43,7 +51,9 @@
             </ng-container>
           </div>
         </div>
-        <button class="col-2 btn search-box__button">Search</button>
+        <button class="col-2 btn search-box__button" type="submit">
+          Search
+        </button>
       </div>
     </form>
   </div>

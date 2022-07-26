@@ -283,7 +283,7 @@ export class TableLocationsComponent implements OnInit {
     }
   }
   submitCreateForm(): void {
-    console.log('haha');
+    
     if (this.validateUpdateForm.valid) {
       console.log('submit', this.validateUpdateForm.value);
       const { name, province, country, valueate } =

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { localStorageService } from 'src/app/localStorage.service';
 import { ProvincesService } from 'src/app/service/provinces/provinces.service';
 import { RoomForRentService } from 'src/app/service/room-for-rent/roomForRent.service';
@@ -206,9 +208,12 @@ export class HomePageComponent implements OnInit {
   dataRoom01: any = {};
   dataRoom02: any = {};
   dataRoom03: any = {};
+  @ViewChild('searchForm') searchForm!: NgForm;
+
   constructor(
     private provinces: ProvincesService,
-    private roomsServices: RoomForRentService
+    private roomsServices: RoomForRentService,
+    private router: Router
   ) {
     // this.localStorageService = new localStorageService();
   }
@@ -258,5 +263,31 @@ export class HomePageComponent implements OnInit {
       },
       (err) => console.log(err)
     );
+  }
+
+  handleSearchSubmit() {
+    console.log('sm ne', this.searchForm.value);
+    const { location } = this.searchForm.value;
+
+    this.router.navigate(['rooms', this.transformVn(location)]);
+  }
+
+  transformVn(str: string) {
+    if (str) {
+      str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
+      str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
+      str = str.replace(/ì|í|ị|ỉ|ĩ/g, 'i');
+      str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, 'o');
+      str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u');
+      str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
+      str = str.replace(/đ/g, 'd');
+      // Some system encode vietnamese combining accent as individual utf-8 characters
+      str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ''); // Huyền sắc hỏi ngã nặng
+      str = str.replace(/\u02C6|\u0306|\u031B/g, ''); // Â, Ê, Ă, Ơ, Ư
+      str = str.replace(/\s+/g, '_');
+      str = str.toLowerCase();
+      return str;
+    }
+    return null;
   }
 }
