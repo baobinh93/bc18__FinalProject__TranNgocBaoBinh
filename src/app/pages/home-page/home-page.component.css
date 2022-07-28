@@ -48,6 +48,10 @@ input:focus-visible {
   padding-top: 16px;
   padding-bottom: 16px;
 }
+.discovery__content-box .card {
+  transition: all 1s linear;
+}
+
 .discovery__content-box--item {
   height: 256px;
   background-repeat: no-repeat;
@@ -68,4 +72,10 @@ input:focus-visible {
 }
 .discovery__content--box a {
   color: #000000d9;
+}
+.hvr-grow:active,
+.hvr-grow:focus,
+.hvr-grow:hover {
+  transform: scale(1.02);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

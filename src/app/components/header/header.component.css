@@ -27,3 +27,10 @@
 .header__navbar--scroll .navbar__text--scroll {
   color: #222222;
 }
+.navbar__svg-icon svg {
+  stroke: white;
+  transition: all 0.1s linear;
+}
+.header__navbar--scroll .navbar__svg-icon svg {
+  stroke: #222222;
+}

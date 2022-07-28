@@ -12,5 +12,32 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 5px;
 }
-.reviews__show button {
+
+.room__services--icon i,
+.room__services--icon svg {
+  height: 1em;
+  width: 1em;
+}
+.room__description--show {
+  display: inline-block;
+}
+.room__description--collape {
+  display: none;
+}
+.room__description--showMore[aria-expanded="true"] .room__description--show {
+  display: none;
+}
+.room__description--showMore[aria-expanded="true"] .room__description--collape {
+  display: inline-block;
+}
+.room__description--show i,
+.room__description--collape i {
+  position: relative;
+  top: -3px;
+}
+.collapse.show em#em {
+  display: none;
+}
+.collapse em#em {
+  display: inline-block !important;
 }

@@ -146,140 +146,119 @@ import { RoomForRentService } from 'src/app/service/room-for-rent/roomForRent.se
           do</span
         >
       </div>
-      <ng-container *ngFor="let item of this.dataAllRooms">
-        <div class="roompage__room border-bottom py-3">
-          <a href="/detail/{{ item['_id'] }}">
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <img
-                  class="img-fluid rounded"
-                  src="{{ item['image'] }}"
-                  alt="{{ item['name'] }}"
-                />
-              </div>
-              <div class="col-12 col-md-8 d-flex align-items-start flex-column">
-                <div class="roompage__room--name h1 text-capitalize">
-                  {{ item['name'] }}
-                </div>
-                <div class="roompage__room--description">
-                  {{ item['description'] }}
-                </div>
-                <div class="roompage__room--space">
-                  <span>{{ item['guests'] }}</span> Guest.
-                  <span>{{ item['bedRoom'] }}</span> Bedroom.
-                  <span>{{ item['bath'] }}</span> Bath.
-                </div>
-                <div
-                  class="roompage__room--utilities mb-auto text-truncate "
-                  style="max-width: 90%"
-                >
-                  <span
-                    *ngIf="item['kitchen']"
-                    class="text-capitalize border-right mr-1 pr-1"
-                  >
-                    kitchen
-                  </span>
-                  <span
-                    *ngIf="item['elevator']"
-                    class=" text-capitalize border-right mr-1 pr-1"
-                  >
-                    elevator
-                  </span>
-                  <span
-                    *ngIf="item['hotTub']"
-                    class=" text-capitalize border-right mr-1 pr-1"
-                  >
-                    hotTub
-                  </span>
-                  <span
-                    *ngIf="item['pool']"
-                    class="text-capitalize border-right mr-1 pr-1"
-                    >pool
-                  </span>
-                  <span
-                    *ngIf="item['indoorFireplace']"
-                    class="text-capitalize border-right mr-1 pr-1"
-                    >indoorFireplace
-                  </span>
-                  <span
-                    *ngIf="item['dryer']"
-                    class="text-capitalize border-right mr-1 pr-1"
-                    >dryer
-                  </span>
-                  <span
-                    *ngIf="item['gym']"
-                    class="text-capitalize border-right mr-1 pr-1"
-                    >gym
-                  </span>
-                  <span
-                    *ngIf="item['heating']"
-                    class="text-capitalize border-right mr-1 pr-1"
-                    >heating
-                  </span>
-                  <span
-                    *ngIf="item['wifi']"
-                    class="text-capitalize border-right mr-1 pr-1"
-                    >wifi
-                  </span>
-                  <span
-                    *ngIf="item['cableTV']"
-                    class="text-capitalize border-right mr-1 pr-1"
-                    >cableTV
-                  </span>
-                </div>
-                <div
-                  class=" w-100 roompage__room--rating d-flex justify-content-between"
-                >
-                  <div>
-                    <i class="fa-solid fa-star mr-1"></i>
-                    <span>1</span>
+      <nz-table #nzTable [nzData]="dataAllRooms" [nzPageSize]="6">
+        <tbody>
+          <tr *ngFor="let item of nzTable.data; let i = index">
+            <td>
+              <div class="roompage__room py-3">
+                <a href="/detail/{{ item['_id'] }}">
+                  <div class="row">
+                    <div class="col-12 col-md-4">
+                      <img
+                        class="img-fluid rounded roompage__room--img "
+                        src="{{ item['image'] }}"
+                        alt="{{ item['name'] }}"
+                      />
+                    </div>
+                    <div
+                      class="col-12 col-md-8 d-flex align-items-start flex-column"
+                    >
+                      <div
+                        class="roompage__room--name h4 mt-3 mt-md-0 text-capitalize"
+                      >
+                        {{ item['name'] }}
+                      </div>
+                      <div class="roompage__room--description mb-2 text-wrap">
+                        <!-- {{ item['description'] >}} -->
+
+                        {{
+                          item['description'].length > 200
+                            ? (item['description'] | slice: 0:200) + '...'
+                            : item['description']
+                        }}
+                      </div>
+                      <div class="roompage__room--space">
+                        <span>{{ item['guests'] }}</span> Guest.
+                        <span>{{ item['bedRoom'] }}</span> Bedroom.
+                        <span>{{ item['bath'] }}</span> Bath.
+                      </div>
+                      <div
+                        class="roompage__room--utilities mb-auto text-truncate "
+                        style="max-width: 90%"
+                      >
+                        <span
+                          *ngIf="item['kitchen']"
+                          class="text-capitalize border-right mr-1 pr-1"
+                        >
+                          kitchen
+                        </span>
+                        <span
+                          *ngIf="item['elevator']"
+                          class=" text-capitalize border-right mr-1 pr-1"
+                        >
+                          elevator
+                        </span>
+                        <span
+                          *ngIf="item['hotTub']"
+                          class=" text-capitalize border-right mr-1 pr-1"
+                        >
+                          hotTub
+                        </span>
+                        <span
+                          *ngIf="item['pool']"
+                          class="text-capitalize border-right mr-1 pr-1"
+                          >pool
+                        </span>
+                        <span
+                          *ngIf="item['indoorFireplace']"
+                          class="text-capitalize border-right mr-1 pr-1"
+                          >indoorFireplace
+                        </span>
+                        <span
+                          *ngIf="item['dryer']"
+                          class="text-capitalize border-right mr-1 pr-1"
+                          >dryer
+                        </span>
+                        <span
+                          *ngIf="item['gym']"
+                          class="text-capitalize border-right mr-1 pr-1"
+                          >gym
+                        </span>
+                        <span
+                          *ngIf="item['heating']"
+                          class="text-capitalize border-right mr-1 pr-1"
+                          >heating
+                        </span>
+                        <span
+                          *ngIf="item['wifi']"
+                          class="text-capitalize border-right mr-1 pr-1"
+                          >wifi
+                        </span>
+                        <span
+                          *ngIf="item['cableTV']"
+                          class="text-capitalize border-right mr-1 pr-1"
+                          >cableTV
+                        </span>
+                      </div>
+                      <div
+                        class=" w-100 roompage__room--rating d-flex justify-content-between"
+                      >
+                        <div>
+                          <i class="fa-solid fa-star mr-1"></i>
+                          <span>4</span>
+                        </div>
+                        <div class="">
+                          $ <span> {{ item['price'] }} </span> / night
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="">
-                    $ <span> {{ item['price'] }} </span> / night
-                  </div>
-                </div>
+                </a>
               </div>
-            </div>
-          </a>
-        </div>
-      </ng-container>
-      <!-- <div class="roompage__room border-bottom py-3">
-        <a href="">
-          <div class="row">
-            <div class="col-12 col-md-4">
-              <img
-                class="img-fluid rounded"
-                src="https://airbnb.cybersoft.edu.vn/public/images/room/1635746941497_muongthanhnhatrang.jpg"
-                alt=""
-              />
-            </div>
-            <div class="col-12 col-md-8 d-flex align-items-start flex-column">
-              <div class="roompage__room--name">HANZ Friday Hotel</div>
-              <div class="roompage__room--description">
-                Re noi o thoai mai tien nghi
-              </div>
-              <div class="roompage__room--space">
-                <span>4</span> Guest. <span>2</span> Bedroom.
-                <span>1</span> Bath.
-              </div>
-              <div class="roompage__room--utilities mb-auto">
-                <span> Kichchen </span>. <span> Wifi </span>.
-                <span> Gym </span>. <span> Hottub </span>.
-                <span> Elevator </span>. <span> Pool </span>.
-              </div>
-              <div
-                class=" w-100 roompage__room--rating d-flex justify-content-between"
-              >
-                <div>
-                  <i class="fa-solid fa-star mr-1"></i>
-                  <span>1</span>
-                </div>
-                <div class="">$ <span> 200000 </span> / night</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div> -->
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
     </div>
   `,
 })
@@ -353,7 +332,7 @@ export class RoomsPageComponent implements OnInit {
             );
           }
         });
-        this.isLoading = false;
+        setTimeout(() => (this.isLoading = false), 1000);
       },
       (err) => {
         console.warn(err.error.message);

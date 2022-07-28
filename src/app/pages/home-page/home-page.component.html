@@ -52,7 +52,9 @@
           </div>
         </div>
         <button class="col-2 btn search-box__button" type="submit">
-          Search
+          <span class="d-none d-sm-inline"> Search </span>
+
+          <i class="d-sm-none d-inline fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
     </form>
@@ -64,7 +66,7 @@
       Khám phá những điểm đến gần đây
     </div>
     <div class="discovery__content--box row">
-      <div class="col-4 col-md-3 hvr-float pointer-cursor mb-2">
+      <div class="col-4 col-md-3 hvr-float pointer-cursor my-2 mb-2">
         <a href="/rooms/thanh_pho_ha_noi">
           <div
             class="discovery__content-box--item rounded"
@@ -75,7 +77,7 @@
           </div>
         </a>
       </div>
-      <div class="col-4 col-md-3 hvr-float pointer-cursor">
+      <div class="col-4 col-md-3 hvr-float pointer-cursor my-2">
         <a href="/rooms/thanh_pho_ho_chi_minh">
           <div
             class="discovery__content-box--item rounded"
@@ -86,7 +88,7 @@
           </div>
         </a>
       </div>
-      <div class="col-4 col-md-3 hvr-float pointer-cursor">
+      <div class="col-4 col-md-3 hvr-float pointer-cursor my-2">
         <a href="/rooms/da_nang">
           <div
             class="discovery__content-box--item rounded"
@@ -97,7 +99,7 @@
           </div>
         </a>
       </div>
-      <div class="col-4 col-md-3 hvr-float pointer-cursor mb-2">
+      <div class="col-4 col-md-3 hvr-float pointer-cursor my-2 mb-2">
         <a href="rooms/vung_tau">
           <div
             class="discovery__content-box--item rounded"
@@ -110,7 +112,7 @@
           </div>
         </a>
       </div>
-      <div class="col-4 col-md-3 hvr-float pointer-cursor">
+      <div class="col-4 col-md-3 hvr-float pointer-cursor my-2">
         <a href="rooms/can_tho">
           <div
             class="discovery__content-box--item rounded"
@@ -121,7 +123,7 @@
           </div>
         </a>
       </div>
-      <div class="col-4 col-md-3 hvr-float pointer-cursor">
+      <div class="col-4 col-md-3 hvr-float pointer-cursor my-2">
         <a href="rooms/phu_quoc">
           <div
             class="discovery__content-box--item rounded"
@@ -133,7 +135,7 @@
         </a>
       </div>
 
-      <div class="col-4 col-md-3 hvr-float pointer-cursor">
+      <div class="col-4 col-md-3 hvr-float pointer-cursor my-2">
         <a href="rooms/nha_trang">
           <div
             class="discovery__content-box--item rounded"
@@ -144,7 +146,7 @@
           </div>
         </a>
       </div>
-      <div class="col-4 col-md-3 hvr-float pointer-cursor">
+      <div class="col-4 col-md-3 hvr-float pointer-cursor my-2">
         <a href="rooms/hoi_an">
           <div
             class="discovery__content-box--item rounded"
@@ -163,9 +165,9 @@
     <div class="discovery__header text-center">
       Khám phá danh sách của chúng tôi
     </div>
-    <div class="discovery__content--box row">
-      <div class="col-6 col-md-4">
-        <div class="card hvr-grow">
+    <div class="discovery__content--box row align-items-stretch">
+      <div class="col-6 col-md-4 mb-md-0 mb-3">
+        <div class="card hvr-grow" style="height: 320px">
           <a href="{{ '/detail/' + this.dataRoom01['_id'] }}">
             <img
               src="{{ this.dataRoom01['image'] }}"
@@ -186,7 +188,7 @@
         </div>
       </div>
       <div class="col-6 col-md-4">
-        <div class="card hvr-grow">
+        <div class="card hvr-grow" style="height: 320px">
           <a href="{{ '/detail/' + this.dataRoom02['_id'] }}">
             <img
               src="{{ this.dataRoom02['image'] }}"
@@ -207,7 +209,7 @@
         </div>
       </div>
       <div class="col-6 col-md-4">
-        <div class="card hvr-grow">
+        <div class="card hvr-grow" style="height: 320px">
           <a href="{{ '/detail/' + this.dataRoom03['_id'] }}">
             <img
               src="{{ this.dataRoom03['image'] }}"

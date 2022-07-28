@@ -17,6 +17,10 @@ export class DetailPageComponent implements OnInit {
   selectedDateRange: DateRange<Date> | null = null;
   tooltips = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
   value = 4.5;
+  isCollapse = true;
+  changeIsCollape() {
+    this.isCollapse = !this.isCollapse;
+  }
   _onSelectedChange(date: Date): void {
     if (
       this.selectedDateRange &&
