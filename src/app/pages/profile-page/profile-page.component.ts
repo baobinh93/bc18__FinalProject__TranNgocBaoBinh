@@ -111,10 +111,10 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit() {
     this.userInfo = this.localStorage.getUserInfo();
-    console.log(this.userInfo.tickets);
-    this.userInfo.tickets.forEach((ticket: string) => {
-      console.log(ticket);
-    });
+    //   console.log(this.userInfo.tickets);
+    // this.userInfo.tickets.forEach((ticket: string) => {
+    //   console.log(ticket);
+    // });
   }
 
   fileName = '';
@@ -130,7 +130,7 @@ export class ProfilePageComponent implements OnInit {
       console.log('upthanh cong', file);
       this.userService.updateAvataUser(file, this.userInfo.token).subscribe(
         (result) => {
-          console.log('result', result);
+          // console.log('result', result);
           this.localStorage.deleteUserInfo();
           this.localStorage.setUserInfo({
             token: this.userInfo.token,
@@ -138,10 +138,11 @@ export class ProfilePageComponent implements OnInit {
           });
 
           this.userInfo = this.localStorage.getUserInfo();
-          alert('Cap nhat thanh cong');
+
+          this.msg.success('Cập nhật thành công');
         },
         (err) => {
-          alert('Cap nhat khong thanh cong');
+          this.msg.error('Cập nhật thất bại');
         }
       );
 

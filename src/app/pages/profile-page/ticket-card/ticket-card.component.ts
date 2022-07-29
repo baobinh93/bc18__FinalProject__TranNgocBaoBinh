@@ -53,7 +53,7 @@ export class TicketCardComponent implements OnInit {
     this.ticketService.getInfoTicket(this.ticketId).subscribe(
       (res) => {
         this.dataInfoticket = res;
-        console.log(res);
+        // console.log(res);
       },
       (err) => console.log(err)
     );

@@ -18,11 +18,11 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
       class="py-5 "
     >
       <nz-form-item class="position-relative">
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired
+        <nz-form-label [nzSm]="7" [nzXs]="24" nzFor="name" nzRequired
           >Name</nz-form-label
         >
         <nz-form-control
-          [nzSm]="14"
+          [nzSm]="13"
           [nzXs]="24"
           nzErrorTip="Please input your name!"
         >
@@ -30,11 +30,11 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email"
+        <nz-form-label [nzSm]="7" [nzXs]="24" nzRequired nzFor="email"
           >E-mail</nz-form-label
         >
         <nz-form-control
-          [nzSm]="14"
+          [nzSm]="13"
           [nzXs]="24"
           nzErrorTip="The input is not valid E-mail!"
         >
@@ -42,11 +42,11 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired
+        <nz-form-label [nzSm]="7" [nzXs]="24" nzFor="password" nzRequired
           >Password</nz-form-label
         >
         <nz-form-control
-          [nzSm]="14"
+          [nzSm]="13"
           [nzXs]="24"
           nzErrorTip="Please input your password!"
         >
@@ -60,10 +60,10 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired
-          >Confirm Password</nz-form-label
+        <nz-form-label [nzSm]="7" [nzXs]="24" nzFor="checkPassword" nzRequired
+          >Confirm Pass</nz-form-label
         >
-        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+        <nz-form-control [nzSm]="13" [nzXs]="24" [nzErrorTip]="errorTpl">
           <input
             nz-input
             type="password"
@@ -82,11 +82,11 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired
+        <nz-form-label [nzSm]="7" [nzXs]="24" nzFor="phoneNumber" nzRequired
           >Phone
         </nz-form-label>
         <nz-form-control
-          [nzSm]="14"
+          [nzSm]="13"
           [nzXs]="24"
           [nzValidateStatus]="validateForm.controls['phoneNumber']"
           [nzErrorTip]="errorTpl2"
@@ -105,11 +105,11 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
       </nz-form-item>
 
       <nz-form-item class="position-relative">
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="birthday" nzRequired
+        <nz-form-label [nzSm]="7" [nzXs]="24" nzFor="birthday" nzRequired
           >Birthday</nz-form-label
         >
         <nz-form-control
-          [nzSm]="14"
+          [nzSm]="13"
           [nzXs]="24"
           nzErrorTip="Please input your birthday!"
         >
@@ -123,11 +123,11 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
       </nz-form-item>
 
       <nz-form-item class="position-relative">
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired
+        <nz-form-label [nzSm]="7" [nzXs]="24" nzFor="address" nzRequired
           >Address</nz-form-label
         >
         <nz-form-control
-          [nzSm]="14"
+          [nzSm]="13"
           [nzXs]="24"
           nzErrorTip="Please input your address!"
         >
@@ -136,10 +136,10 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="gender" nzRequired
+        <nz-form-label [nzSm]="7" [nzXs]="24" nzFor="gender" nzRequired
           >Gender</nz-form-label
         >
-        <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-form-control [nzSm]="13" [nzXs]="24">
           <nz-radio-group formControlName="gender">
             <label nz-radio [nzValue]="true">Male</label>
             <label nz-radio [nzValue]="false">Female</label>
@@ -148,7 +148,7 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
       </nz-form-item>
 
       <nz-form-item nz-row class="register-area">
-        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <nz-form-control [nzSpan]="13" [nzOffset]="7">
           <label nz-checkbox formControlName="agree">
             <span>
               I have read the
@@ -159,11 +159,14 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
       </nz-form-item>
 
       <nz-form-item nz-row class="register-area">
-        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <nz-form-control [nzSpan]="14" [nzOffset]="10">
           <button
             nz-button
             nzType="primary"
-            [disabled]="!this.validateForm.controls['agree'].value"
+            [disabled]="
+              !this.validateForm.valid ||
+              !this.validateForm.controls['agree'].value
+            "
           >
             Register
           </button>

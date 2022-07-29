@@ -1,10 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
 import { localStorageService } from 'src/app/localStorage.service';
 import { UserService } from 'src/app/service/user/userService.service';
 @Component({
@@ -26,6 +34,7 @@ import { UserService } from 'src/app/service/user/userService.service';
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
+      #modalUserInfo
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -176,12 +185,18 @@ import { UserService } from 'src/app/service/user/userService.service';
 })
 export class UpdateInfoFormComponent {
   @Input() userInfo: any = {};
+
   openUpdateBtn = true;
   changeOpenUpdateBtn() {
     return (this.openUpdateBtn = false);
   }
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private message: NzMessageService,
+    private rerender: Renderer2
+  ) {
     this.localStorageService = new localStorageService();
   }
   localStorageService;
@@ -213,14 +228,16 @@ export class UpdateInfoFormComponent {
 
   handleOk(): void {
     console.log('Button ok clicked!');
-    this.isVisible = false;
+    //this.isVisible = false;
   }
 
   handleCancel(): void {
     console.log('Button cancel clicked!');
-    this.isVisible = false;
+    // this.isVisible = false;
   }
   submitForm(): void {
+    console.log('Button submit clicked!');
+    this.isVisible = false;
     if (this.validateForm.valid) {
       let { name, email, phone, birthday, gender, address, type } =
         this.validateForm.value;
@@ -250,15 +267,18 @@ export class UpdateInfoFormComponent {
         .subscribe(
           (result) => {
             console.log('result', result);
-            console.log('token', this.userInfo.token);
+            //console.log('token', this.userInfo.token);
             this.localStorageService.setUserInfo({
               token: this.userInfo.token,
               ...result,
             });
-            //alert(result.message);
+            this.userInfo = this.localStorageService.getUserInfo();
+            // this.message.success('Cập nhật thành công');
+
+            setTimeout(() => this.refresh(), 1000);
           },
           (err) => {
-            alert(err.error.message);
+            this.message.error('Cập nhật thất bại');
           }
         );
     } else {
@@ -269,5 +289,8 @@ export class UpdateInfoFormComponent {
         }
       });
     }
+  }
+  refresh(): void {
+    window.location.reload();
   }
 }

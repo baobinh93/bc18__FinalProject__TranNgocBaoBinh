@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
 import { Validate } from 'src/app/validate';
 import { localStorageService } from 'src/app/localStorage.service';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 @Component({
   selector: 'app-sign-in-page',
   //  templateUrl: './sign-in-page.component.html',
@@ -174,7 +175,7 @@ import { Router } from '@angular/router';
           <form
             #signInForm="ngForm"
             (ngSubmit)="handleSignInSubmit()"
-            class="w-100 mt-sm-4"
+            class="w-100  mt-4"
           >
             <div class="input-group">
               <div class="input-group-prepend">
@@ -214,7 +215,7 @@ import { Router } from '@angular/router';
                 </span>
               </div>
               <input
-                type="text"
+                [type]="passwordVisible ? 'text' : 'password'"
                 class="form-control "
                 name="password"
                 placeholder="Nhập password"
@@ -222,6 +223,23 @@ import { Router } from '@angular/router';
                 #passwordInputRef="ngModel"
                 required
               />
+              <div
+                class="position-absolute"
+                style="right:10px; top: 9px; "
+                (click)="passwordVisible = !passwordVisible"
+              >
+                <!-- <i
+                  nz-icon
+                  [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                  (click)="passwordVisible = !passwordVisible"
+                ></i>
+                <i class="fa-solid fa-eye-low-vision"></i> -->
+                <i
+                  class="fa-solid"
+                  [ngClass]="passwordVisible ? 'fa-eye' : 'fa-eye-slash'"
+                ></i>
+                <!-- <i class="fa-solid fa-eye-slash"></i> -->
+              </div>
             </div>
             <div
               class="p-0 text-danger"
@@ -243,7 +261,7 @@ import { Router } from '@angular/router';
               <button
                 class="btn btn-primary border-0 btn-sm"
                 [disabled]="passwordInputRef.errors?.['required'] ||  emailInputRef.errors?.['required'] || !validate.password(passwordInputRef.value) || !validate.email(emailInputRef.value)"
-                [ngClass]="passwordInputRef.errors?.['required'] ||  emailInputRef.errors?.['required'] || !validate.password(passwordInputRef.value) || !validate.email(emailInputRef.value)? 'bg-secondary text-white' : 'bg-danger text-warning'"
+                [ngClass]="passwordInputRef.errors?.['required'] ||  emailInputRef.errors?.['required'] || !validate.password(passwordInputRef.value) || !validate.email(emailInputRef.value)? 'bg-secondary text-white' : 'bg-primary text-white'"
               >
                 Đăng Nhập
               </button>
@@ -268,20 +286,23 @@ export class SignInPageComponent implements OnInit {
           token: result.token,
           ...result.user,
         });
-        alert(result.message);
+        // alert(result.message);
+        this.message.success(result.message);
         this.router.navigate(['/']);
       },
       (err) => {
-        alert(err.error.message);
+        this.message.error(err.error.message);
       }
     );
   }
   @ViewChild('signInForm') signInForm!: NgForm;
   validate: Validate;
   localStorageService;
+  passwordVisible = false;
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private message: NzMessageService
   ) {
     this.validate = new Validate();
     this.localStorageService = new localStorageService();
