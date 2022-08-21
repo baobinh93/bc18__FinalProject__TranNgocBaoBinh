@@ -69,13 +69,13 @@ export class TableUsersComponent implements OnInit {
     console.log(_id);
   }
   handleOk(): void {
-    console.log('Button ok clicked!');
+    //console.log('Button ok clicked!');
     this.isInfoUserModalVisible = false;
     this.isUpdateUserFormModalVisible = false;
   }
 
   handleCancel(): void {
-    console.log('Button cancel clicked!');
+    // console.log('Button cancel clicked!');
     this.isInfoUserModalVisible = false;
     this.isUpdateUserFormModalVisible = false;
   }
@@ -84,15 +84,18 @@ export class TableUsersComponent implements OnInit {
   }
 
   confirmDeleteUser(_id: string): void {
+    console.log('Xoa ne');
+
     this.userService.deleteUser(_id).subscribe(
       (res) => {
         console.log(res);
         this.nzMessageService.info('Đã xoá user');
-        setTimeout(this.refresh, 500);
+        // setTimeout(this.refresh, 500);
       },
       (err) => this.nzMessageService.warning(err)
     );
-
+    this.dataUser = this.dataUser.filter((user) => user['_id'] !== _id);
+    this.listOfDisplayData = [...this.dataUser];
     console.log('Xoa user co id', _id);
   }
 }

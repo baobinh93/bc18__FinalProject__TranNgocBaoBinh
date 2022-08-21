@@ -240,7 +240,7 @@ export class UpdateUserFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.Variable);
+    // console.log(this.Variable);
     const dataUser = this.dataUserToUpdate;
     this.validateForm = this.fb.group({
       phone: [
