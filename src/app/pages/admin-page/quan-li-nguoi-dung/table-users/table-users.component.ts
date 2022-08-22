@@ -9,13 +9,14 @@ import { UserService } from 'src/app/service/user/userService.service';
   styleUrls: ['./table-users.component.css'],
 })
 export class TableUsersComponent implements OnInit {
-  // listOfDisplayData: any = [];
+  listOfDisplayData: any = [];
   isInfoUserModalVisible = false;
   isUpdateUserFormModalVisible = false;
-  dataUser = [];
+  dataUser: any = [];
   dataUserToUpdate = {};
+  indexOfUserToUpdate: number = 0;
   dataUserToShowInModal: any = {};
-  listOfDisplayData = [...this.dataUser];
+  // listOfDisplayData = [...this.dataUser];
   test = [];
   searchValue = '';
   visible = false;
@@ -23,7 +24,19 @@ export class TableUsersComponent implements OnInit {
     private userService: UserService,
     private nzMessageService: NzMessageService
   ) {}
-
+  getDataFormChildren(_data: any) {
+    console.log('success :', _data);
+    const newDataUser = this.dataUser.map((user: any) => {
+      if (user['_id'] === _data['_id']) {
+        return (user = { ..._data });
+      } else {
+        return user;
+      }
+    });
+    this.dataUser = [...newDataUser];
+    this.listOfDisplayData = [...this.dataUser];
+    console.log(newDataUser);
+  }
   ngOnInit() {
     this.userService.getAllUsers(0, 10).subscribe(
       (res) => {
@@ -61,7 +74,6 @@ export class TableUsersComponent implements OnInit {
     this.dataUserToShowInModal = _user;
   }
   updateUser(_user: {}) {
-    //console.log(_user);
     this.isUpdateUserFormModalVisible = true;
     this.dataUserToUpdate = _user;
   }
@@ -91,11 +103,14 @@ export class TableUsersComponent implements OnInit {
         console.log(res);
         this.nzMessageService.info('Đã xoá user');
         // setTimeout(this.refresh, 500);
+        this.dataUser = this.dataUser.filter(
+          (user: any) => user['_id'] !== _id
+        );
+        this.listOfDisplayData = [...this.dataUser];
       },
       (err) => this.nzMessageService.warning(err)
     );
-    this.dataUser = this.dataUser.filter((user) => user['_id'] !== _id);
-    this.listOfDisplayData = [...this.dataUser];
+
     console.log('Xoa user co id', _id);
   }
 }
