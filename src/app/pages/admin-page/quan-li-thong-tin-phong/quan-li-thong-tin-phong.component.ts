@@ -438,7 +438,7 @@ export class QuanLiThongTinPhongComponent implements OnInit {
     this.isModalFormShow = true;
     this.isModalUpdateForm = true;
     this.idRoomUpdate = _room['_id'];
-    //  console.log(_room['locationId']);
+    console.log(_room['locationId']);
 
     this.idLocationId = this.findIdLocationFormLocation(_room['locationId']);
     //console.log(this.idLocationId);
